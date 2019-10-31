@@ -10,12 +10,12 @@ script:
 
 after_success:
   - docker build -t sinusekhar/multi-client ./client
-  - docker build -f sinusekhar/multi-nginx ./nginx
-  - docker build -f sinusekhar/multi-server ./server
-  - docker build -f sinusekhar/multi-worker ./worker
+  - docker build -t sinusekhar/multi-nginx ./nginx
+  - docker build -t sinusekhar/multi-server ./server
+  - docker build -t sinusekhar/multi-worker ./worker
 #login to docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push sinusekhar/multi-client
   - docker push sinusekhar/multi-nginx
   - docker push sinusekhar/multi-server
-  - docker push sinusekhar/multi-worker  
+  - docker push sinusekhar/multi-worker
